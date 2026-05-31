@@ -1,0 +1,450 @@
+// ===== リセット =====
+*
+	padding: 0
+	margin: 0
+	font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif
+	box-sizing: border-box
+
+// ===== カラーパレット =====
+// 参照: NumberTales-HTML_CSS / SeventyEight-HTML_CSS と同系統の命名規則
+// ※ 以下は暫定値。作品のビジュアルイメージに合わせて author が調整してください
+$primary-dark: #1e2a18 // メインの濃色（ダーク軍緑）
+$secondary-dark: #2d3f22 // サブの濃色（フォレストグリーン）
+$light-dark: #4a6233 // 中間色（ミリタリーグリーン）
+$accent-gold: #c87c1a // アクセントカラー（アンバー/琥珀）
+$light-gold: #e8a03a // アクセントの淡色（ライトアンバー）
+$pure-white: #ffffff
+$light-gray: #f8f9fa
+$medium-gray: #6c757d
+$border-gray: #dee2e6
+$text-dark: #2d3f22
+$shadow-color: rgba(30, 42, 24, 0.15)
+$responsive-midiumsize: 800px
+$responsive-smallsize: 600px
+$opacity: 0.8
+
+// ===== Mixins =====
+@mixin font-sansserif
+	font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif
+
+@mixin responsive-dualblock
+	width: 100%
+	max-width: none
+	display: block
+
+@mixin medium-dualblock
+	width: 48%
+	max-width: 750px
+	margin: 10px 10px
+	box-sizing: border-box
+	@media screen and (max-width: $responsive-midiumsize)
+		@include responsive-dualblock
+
+@mixin div-dualblock0
+	margin: 0 auto
+	box-sizing: border-box
+	img.character-img
+		width: 48%
+		box-shadow: 7px 7px 5px rgba($primary-dark, 0.5)
+		vertical-align: top
+		margin: 20px 0 0 20px
+		box-sizing: border-box
+		border-radius: 12px
+		display: inline-block
+		@media screen and (max-width: $responsive-midiumsize)
+			@include responsive-dualblock
+
+@mixin div-dualblock1
+	@include medium-dualblock
+	display: inline-block
+	vertical-align: top
+
+@mixin div-pageblock0
+	margin: 0 auto
+	box-sizing: border-box
+	max-width: 900px
+
+@mixin a-link($bg-color, $bg-color-hover)
+	display: inline-block
+	padding: 12px 24px
+	margin: 8px 4px
+	background: linear-gradient(135deg, $bg-color 0%, lighten($bg-color, 10%) 100%)
+	color: $pure-white
+	text-decoration: none
+	border-radius: 25px
+	box-shadow: 0 4px 15px rgba($bg-color, 0.3)
+	transition: all 0.3s ease
+	font-weight: 600
+	font-size: 0.9rem
+	border: none
+	cursor: pointer
+	&:hover
+		transform: translateY(-2px)
+		box-shadow: 0 8px 25px rgba($bg-color-hover, 0.4)
+		background: linear-gradient(135deg, $bg-color-hover 0%, lighten($bg-color-hover, 15%) 100%)
+		text-decoration: none
+	&:active
+		transform: translateY(0)
+		box-shadow: 0 2px 10px rgba($bg-color, 0.4)
+	@media screen and (max-width: $responsive-smallsize)
+		padding: 10px 20px
+		font-size: 0.85rem
+
+@mixin a-block($blockcolor, $blockcolor-hover, $block-opacity)
+	display: inline-block
+	padding: 12px 24px
+	margin: 8px 4px
+	background: linear-gradient(135deg, $blockcolor 0%, lighten($blockcolor, 10%) 100%)
+	color: $pure-white
+	text-decoration: none
+	border-radius: 25px
+	box-shadow: 0 4px 15px rgba($blockcolor, 0.3)
+	transition: all 0.3s ease
+	font-weight: 600
+	font-size: 0.9rem
+	border: none
+	cursor: pointer
+	opacity: $block-opacity
+	&:hover
+		transform: translateY(-2px)
+		box-shadow: 0 8px 25px rgba($blockcolor-hover, 0.4)
+		background: linear-gradient(135deg, $blockcolor-hover 0%, lighten($blockcolor-hover, 15%) 100%)
+		text-decoration: none
+		opacity: 1.0
+	&:active
+		transform: translateY(0)
+		box-shadow: 0 2px 10px rgba($blockcolor, 0.4)
+	@media screen and (max-width: $responsive-smallsize)
+		padding: 10px 20px
+		font-size: 0.85rem
+
+// ===== ハンバーガーメニュー =====
+.hamburger_btn
+	position: fixed
+	left: 20px
+	top: 20px
+	cursor: pointer
+	z-index: 1000
+	background: rgba($primary-dark, 0.85)
+	border-radius: 8px
+	padding: 10px
+	backdrop-filter: blur(5px)
+	.line
+		display: block
+		width: 28px
+		height: 3px
+		background-color: $pure-white
+		border-radius: 2px
+		margin: 5px 0
+		transition: transform 0.3s ease, opacity 0.3s ease
+	.btn_line01
+		transform: rotate(45deg) translate(5px, 8px)
+	.btn_line02
+		opacity: 0
+	.btn_line03
+		transform: rotate(-45deg) translate(5px, -8px)
+
+.side_menu
+	position: fixed
+	left: 0
+	top: 0
+	height: 100vh
+	width: 260px
+	background: linear-gradient(180deg, $primary-dark 0%, $secondary-dark 100%)
+	z-index: 999
+	padding: 70px 20px 20px
+	overflow-y: auto
+	box-shadow: 4px 0 20px rgba($primary-dark, 0.5)
+	.menu-title
+		font-size: 1.2rem
+		color: $light-gold
+		font-weight: 700
+		margin-bottom: 20px
+		padding-bottom: 10px
+		border-bottom: 1px solid rgba($accent-gold, 0.4)
+	ul
+		list-style: none
+		padding: 0
+		margin: 0
+		li
+			border-bottom: 1px solid rgba($accent-gold, 0.2)
+			a
+				display: block
+				padding: 12px 8px
+				color: $pure-white
+				text-decoration: none
+				font-size: 0.95rem
+				transition: all 0.2s ease
+				&:hover
+					color: $light-gold
+					padding-left: 16px
+
+// サイドバーのトランジション
+.v-enter-active, .v-leave-active
+	transition: transform 0.3s ease
+.v-enter-from, .v-leave-to
+	transform: translateX(-100%)
+
+// ===== ベーススタイル =====
+body
+	background: $light-gray
+	color: $text-dark
+	line-height: 1.7
+
+header
+	min-height: 60px
+
+main
+	max-width: 900px
+	margin: 0 auto
+	padding: 20px 20px 40px 80px
+	@media screen and (max-width: $responsive-midiumsize)
+		padding: 20px 15px 40px 70px
+	@media screen and (max-width: $responsive-smallsize)
+		padding: 15px 10px 30px 10px
+
+h1
+	font-size: clamp(1.8rem, 5vw, 3rem)
+	color: $primary-dark
+	font-weight: 700
+	margin: 30px 0 20px
+	padding-bottom: 10px
+	border-bottom: 3px solid $accent-gold
+
+h2
+	font-size: clamp(1.2rem, 3vw, 1.8rem)
+	color: $secondary-dark
+	font-weight: 700
+	margin: 20px 0 10px
+	padding-left: 12px
+	border-left: 4px solid $accent-gold
+
+.h2-a-link
+	display: block
+	padding: 12px 24px
+	margin: 30px auto
+	background: linear-gradient(135deg, $accent-gold 0%, lighten($accent-gold, 10%) 100%)
+	color: $pure-white
+	text-decoration: none
+	border-radius: 25px
+	box-shadow: 0 4px 15px rgba($accent-gold, 0.3)
+	transition: all 0.3s ease
+	font-weight: 600
+	font-size: 0.9rem
+	border: none
+	border-left: none
+	cursor: pointer
+	width: auto
+	max-width: 75%
+	text-align: center
+	&:hover
+		transform: translateY(-2px)
+		box-shadow: 0 8px 25px rgba($light-gold, 0.5)
+		background: linear-gradient(135deg, $light-gold 0%, lighten($light-gold, 10%) 100%)
+		text-decoration: none
+
+h3
+	font-size: clamp(1rem, 2.5vw, 1.3rem)
+	color: $light-dark
+	font-weight: 600
+	margin: 15px 0 8px
+
+h4
+	font-size: 1.05rem
+	color: $secondary-dark
+	font-weight: 600
+	margin: 12px 0 6px
+
+.h3-small
+	font-size: 1.1rem
+	color: $medium-gray
+	margin: 15px 0 5px
+
+p
+	line-height: 1.8
+	margin: 8px 0
+	font-size: 0.97rem
+
+.p-bold
+	font-weight: 700
+	color: $secondary-dark
+
+// ===== リンク =====
+.a-link
+	@include a-link($accent-gold, darken($accent-gold, 10%))
+
+.a-p
+	color: $accent-gold
+	text-decoration: underline
+	&:hover
+		color: darken($accent-gold, 15%)
+
+// ===== ブロックレイアウト =====
+.background0
+	background: $pure-white
+	border-radius: 15px
+	padding: 25px 30px
+	margin: 20px 0
+	box-shadow: 0 4px 15px $shadow-color
+
+.background1
+	background: linear-gradient(135deg, $light-gray 0%, $pure-white 100%)
+	border-radius: 12px
+	padding: 20px 25px
+	margin: 15px 0
+	border: 1px solid $border-gray
+	box-shadow: 0 2px 8px $shadow-color
+
+// ===== リストコンポーネント =====
+.list-comp-card
+	background: $pure-white
+	border-radius: 15px
+	box-shadow: 0 8px 25px $shadow-color
+	padding: 20px
+	margin: 20px 5px auto 5px
+	border: 1px solid $border-gray
+	transition: all 0.3s ease
+	display: inline-block
+	width: 200px
+	vertical-align: top
+	text-align: center
+	&:hover
+		transform: translateY(-5px)
+		box-shadow: 0 15px 40px rgba($primary-dark, 0.15)
+	.list-comp-title
+		font-size: 1rem
+		font-weight: 700
+		color: $secondary-dark
+		margin-bottom: 10px
+	img.character-list-img
+		width: 100%
+		border-radius: 10px
+		object-fit: cover
+	@media screen and (max-width: $responsive-smallsize)
+		width: 100%
+		display: block
+		margin: 10px auto
+
+.list-comp-wide
+	background: $pure-white
+	border-radius: 15px
+	box-shadow: 0 4px 15px $shadow-color
+	padding: 20px
+	margin: 20px 0
+	border: 1px solid $border-gray
+	display: flex
+	gap: 20px
+	transition: all 0.3s ease
+	&:hover
+		box-shadow: 0 8px 25px rgba($primary-dark, 0.15)
+	.list-comp-wide-image
+		flex-shrink: 0
+		width: 180px
+		img
+			width: 100%
+			border-radius: 10px
+			object-fit: cover
+	.list-comp-wide-body
+		flex: 1
+	.list-comp-title
+		font-size: 1.1rem
+		font-weight: 700
+		color: $secondary-dark
+		margin-bottom: 10px
+	@media screen and (max-width: $responsive-midiumsize)
+		flex-direction: column
+		.list-comp-wide-image
+			width: 100%
+
+// ===== スクロール領域 =====
+.block-scroll
+	overflow: hidden
+	margin: 10px 0
+
+.scroll-content
+	overflow-x: auto
+	overflow-y: hidden
+	white-space: nowrap
+	padding-bottom: 10px
+	&--vertical
+		overflow-x: hidden
+		overflow-y: auto
+		white-space: normal
+
+// ===== NOTICE ブロック =====
+.notice-block
+	background: linear-gradient(135deg, rgba($light-gold, 0.08) 0%, rgba($accent-gold, 0.05) 100%)
+	border: 1px solid rgba($accent-gold, 0.35)
+	border-radius: 8px
+	padding: 15px
+	margin: 20px 0
+	font-size: 0.9rem
+	color: $primary-dark
+	position: relative
+	&::before
+		content: "NOTICE"
+		display: inline-block
+		margin-right: 8px
+		font-size: 1.1rem
+	p
+		margin: 5px 0
+		line-height: 1.5
+
+// ===== モーダル =====
+.modal-overlay
+	position: fixed
+	top: 0
+	left: 0
+	width: 100vw
+	height: 100vh
+	background: rgba($primary-dark, 0.85)
+	backdrop-filter: blur(10px)
+	z-index: 2000
+	display: flex
+	align-items: center
+	justify-content: center
+	padding: 20px
+
+.modal-content
+	background: $pure-white
+	border-radius: 20px
+	max-width: 700px
+	width: 100%
+	max-height: 80vh
+	overflow-y: auto
+	padding: 30px
+
+// ===== フッター =====
+footer
+	background: linear-gradient(135deg, $primary-dark 0%, $secondary-dark 100%)
+	color: $pure-white
+	padding: 30px 20px
+	margin-top: 40px
+	text-align: center
+	#app-credit
+		max-width: 900px
+		margin: 0 auto
+	.license
+		margin: 15px 0
+		p
+			color: rgba($pure-white, 0.85)
+			font-size: 0.85rem
+		a
+			color: $light-gold
+			text-decoration: none
+			&:hover
+				text-decoration: underline
+		img
+			filter: brightness(0) invert(1)
+			opacity: 0.8
+	.credits
+		margin-top: 15px
+		p
+			color: rgba($pure-white, 0.85)
+			font-size: 0.85rem
+			margin: 5px 0
+		a
+			color: $light-gold
+			text-decoration: none
+			&:hover
+				text-decoration: underline
