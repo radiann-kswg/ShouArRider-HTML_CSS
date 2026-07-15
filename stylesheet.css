@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700;800&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -11,49 +12,64 @@
   top: 20px;
   cursor: pointer;
   z-index: 1000;
-  background: rgba(30, 42, 24, 0.85);
-  border-radius: 8px;
+  background: rgba(15, 26, 36, 0.75);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 6px;
   padding: 10px;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 14px rgba(22, 211, 184, 0.18);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.hamburger_btn:hover {
+  border-color: #16d3b8;
+  box-shadow: 0 0 20px rgba(22, 211, 184, 0.4);
 }
 .hamburger_btn .line {
   display: block;
   width: 28px;
   height: 3px;
-  background-color: #ffffff;
+  background-color: #f5d67b;
   border-radius: 2px;
   margin: 5px 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
 }
 .hamburger_btn .btn_line01 {
   transform: rotate(45deg) translate(5px, 8px);
+  background-color: #5ffbe4;
 }
 .hamburger_btn .btn_line02 {
   opacity: 0;
 }
 .hamburger_btn .btn_line03 {
   transform: rotate(-45deg) translate(5px, -8px);
+  background-color: #5ffbe4;
 }
 
 .side_menu {
+  font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
   position: fixed;
   left: 0;
   top: 0;
   height: 100vh;
-  width: 260px;
-  background: linear-gradient(180deg, #1e2a18 0%, #2d3f22 100%);
+  width: 270px;
+  background: url("/img/pattern-lattice.svg") repeat, linear-gradient(180deg, rgba(15, 26, 36, 0.97) 0%, rgba(10, 15, 20, 0.98) 100%);
   z-index: 999;
   padding: 70px 20px 20px;
   overflow-y: auto;
-  box-shadow: 4px 0 20px rgba(30, 42, 24, 0.5);
+  border-right: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 4px 0 30px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
 }
 .side_menu .menu-title {
-  font-size: 1.2rem;
-  color: #e8a03a;
+  font-family: "Shippori Mincho", "Yu Mincho", YuMincho, "Hiragino Mincho ProN", "Noto Serif JP", serif;
+  font-size: 1.3rem;
+  color: #f5d67b;
   font-weight: 700;
+  letter-spacing: 0.12em;
   margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid rgba(200, 124, 26, 0.4);
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+  text-shadow: 0 0 12px rgba(22, 211, 184, 0.3);
 }
 .side_menu ul {
   list-style: none;
@@ -61,19 +77,20 @@
   margin: 0;
 }
 .side_menu ul li {
-  border-bottom: 1px solid rgba(200, 124, 26, 0.2);
+  border-bottom: 1px solid rgba(22, 211, 184, 0.12);
 }
 .side_menu ul li a {
   display: block;
   padding: 12px 8px;
-  color: #ffffff;
+  color: #dfe9ee;
   text-decoration: none;
   font-size: 0.95rem;
   transition: all 0.2s ease;
 }
 .side_menu ul li a:hover {
-  color: #e8a03a;
-  padding-left: 16px;
+  color: #5ffbe4;
+  padding-left: 18px;
+  text-shadow: 0 0 10px rgba(22, 211, 184, 0.5);
 }
 
 .v-enter-active, .v-leave-active {
@@ -85,9 +102,14 @@
 }
 
 body {
-  background: #f8f9fa;
-  color: #2d3f22;
+  font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  min-height: 100vh;
+  color: #dfe9ee;
   line-height: 1.7;
+  background-color: #0a0f14;
+  background-image: radial-gradient(1200px 620px at 50% -12%, rgba(22, 211, 184, 0.1), transparent 62%), radial-gradient(900px 520px at 100% 0%, rgba(212, 175, 55, 0.06), transparent 55%), url("/img/pattern-lattice.svg");
+  background-repeat: no-repeat, no-repeat, repeat;
+  background-attachment: fixed;
 }
 
 header {
@@ -111,144 +133,208 @@ main {
 }
 
 h1 {
-  font-size: clamp(1.8rem, 5vw, 3rem);
-  color: #1e2a18;
-  font-weight: 700;
-  margin: 30px 0 20px;
-  padding-bottom: 10px;
-  border-bottom: 3px solid #c87c1a;
+  font-family: "Shippori Mincho", "Yu Mincho", YuMincho, "Hiragino Mincho ProN", "Noto Serif JP", serif;
+  font-size: clamp(1.9rem, 5vw, 3.1rem);
+  color: #f5d67b;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin: 36px 0 24px;
+  padding-bottom: 18px;
+  position: relative;
+  text-shadow: 0 0 22px rgba(22, 211, 184, 0.35), 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: min(340px, 62%);
+  height: 12px;
+  background-image: url("/img/pattern-thunder.svg");
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: auto 100%;
+  opacity: 0.9;
 }
 
 h2 {
-  font-size: clamp(1.2rem, 3vw, 1.8rem);
-  color: #2d3f22;
+  font-family: "Shippori Mincho", "Yu Mincho", YuMincho, "Hiragino Mincho ProN", "Noto Serif JP", serif;
+  font-size: clamp(1.3rem, 3vw, 1.85rem);
+  color: #f5d67b;
   font-weight: 700;
-  margin: 20px 0 10px;
-  padding-left: 12px;
-  border-left: 4px solid #c87c1a;
+  letter-spacing: 0.05em;
+  margin: 26px 0 12px;
+  padding-left: 14px;
+  border-left: 3px solid #d4af37;
+  box-shadow: -1px 0 12px rgba(212, 175, 55, 0.25);
+  text-shadow: 0 0 12px rgba(22, 211, 184, 0.22);
 }
 
 .h2-a-link {
+  font-family: "Shippori Mincho", "Yu Mincho", YuMincho, "Hiragino Mincho ProN", "Noto Serif JP", serif;
   display: block;
-  padding: 12px 24px;
-  margin: 30px auto;
-  background: linear-gradient(135deg, #c87c1a 0%, rgb(228.1946902655, 149.8407079646, 48.8053097345) 100%);
-  color: #ffffff;
+  padding: 16px 24px;
+  margin: 32px auto;
+  background: linear-gradient(135deg, rgba(15, 26, 36, 0.85) 0%, rgba(10, 15, 20, 0.85) 100%);
+  color: #f5d67b;
   text-decoration: none;
-  border-radius: 25px;
-  box-shadow: 0 4px 15px rgba(200, 124, 26, 0.3);
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.12), 0 8px 26px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(5px);
   transition: all 0.3s ease;
-  font-weight: 600;
-  font-size: 0.9rem;
-  border: none;
-  border-left: none;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
   cursor: pointer;
   width: auto;
   max-width: 75%;
   text-align: center;
 }
 .h2-a-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(232, 160, 58, 0.5);
-  background: linear-gradient(135deg, #e8a03a 0%, rgb(237.3318181818, 182.0227272727, 103.6681818182) 100%);
+  color: #5ffbe4;
+  border-color: #16d3b8;
+  box-shadow: 0 0 26px rgba(22, 211, 184, 0.4), inset 0 0 24px rgba(22, 211, 184, 0.08);
   text-decoration: none;
+  transform: translateY(-2px);
 }
 
 h3 {
-  font-size: clamp(1rem, 2.5vw, 1.3rem);
-  color: #4a6233;
-  font-weight: 600;
-  margin: 15px 0 8px;
+  font-family: "Shippori Mincho", "Yu Mincho", YuMincho, "Hiragino Mincho ProN", "Noto Serif JP", serif;
+  font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+  color: #16d3b8;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  margin: 18px 0 8px;
 }
 
 h4 {
-  font-size: 1.05rem;
-  color: #2d3f22;
+  font-family: "Shippori Mincho", "Yu Mincho", YuMincho, "Hiragino Mincho ProN", "Noto Serif JP", serif;
+  font-size: 1.08rem;
+  color: #f5d67b;
   font-weight: 600;
   margin: 12px 0 6px;
 }
 
 .h3-small {
   font-size: 1.1rem;
-  color: #6c757d;
+  color: #9fb2bd;
   margin: 15px 0 5px;
 }
 
 p {
-  line-height: 1.8;
+  line-height: 1.85;
   margin: 8px 0;
   font-size: 0.97rem;
+  color: #dfe9ee;
 }
 
 .p-bold {
   font-weight: 700;
-  color: #2d3f22;
+  color: #f5d67b;
 }
 
 .a-link {
   display: inline-block;
-  padding: 12px 24px;
+  padding: 11px 22px;
   margin: 8px 4px;
-  background: linear-gradient(135deg, #c87c1a 0%, rgb(228.1946902655, 149.8407079646, 48.8053097345) 100%);
-  color: #ffffff;
+  background: rgba(10, 15, 20, 0.55);
+  color: #f5d67b;
   text-decoration: none;
-  border-radius: 25px;
-  box-shadow: 0 4px 15px rgba(200, 124, 26, 0.3);
-  transition: all 0.3s ease;
+  border: 1px solid rgba(212, 175, 55, 0.6);
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.1), 0 4px 14px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  transition: all 0.25s ease;
   font-weight: 600;
   font-size: 0.9rem;
-  border: none;
+  letter-spacing: 0.03em;
   cursor: pointer;
 }
 .a-link:hover {
+  color: #5ffbe4;
+  border-color: #16d3b8;
+  background: rgba(15, 26, 36, 0.7);
+  box-shadow: 0 0 20px rgba(22, 211, 184, 0.4), inset 0 0 18px rgba(22, 211, 184, 0.08);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(154.8672566372, 96.017699115, 20.1327433628, 0.4);
-  background: linear-gradient(135deg, rgb(154.8672566372, 96.017699115, 20.1327433628) 0%, rgb(222.5663716814, 137.9911504425, 28.9336283186) 100%);
   text-decoration: none;
 }
 .a-link:active {
   transform: translateY(0);
-  box-shadow: 0 2px 10px rgba(200, 124, 26, 0.4);
+  box-shadow: 0 0 10px rgba(22, 211, 184, 0.3);
 }
 @media screen and (max-width: 600px) {
   .a-link {
-    padding: 10px 20px;
+    padding: 10px 18px;
     font-size: 0.85rem;
   }
 }
 
 .a-p {
-  color: #c87c1a;
+  color: #16d3b8;
   text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 .a-p:hover {
-  color: rgb(132.3008849558, 82.0265486726, 17.1991150442);
+  color: #5ffbe4;
+  text-shadow: 0 0 10px rgba(22, 211, 184, 0.45);
 }
 
 .background0 {
-  background: #ffffff;
-  border-radius: 15px;
-  padding: 25px 30px;
-  margin: 20px 0;
-  box-shadow: 0 4px 15px rgba(30, 42, 24, 0.15);
+  background: linear-gradient(160deg, rgba(15, 26, 36, 0.72) 0%, rgba(10, 15, 20, 0.72) 100%);
+  border: 1px solid rgba(95, 251, 228, 0.14);
+  border-top: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 10px;
+  padding: 28px 32px;
+  margin: 24px 0;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45), inset 0 0 34px rgba(22, 211, 184, 0.03);
+  position: relative;
+}
+.background0::before, .background0::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+  z-index: 1;
+}
+.background0::before {
+  top: 10px;
+  left: 10px;
+  border-top: 2px solid #d4af37;
+  border-left: 2px solid #d4af37;
+}
+.background0::after {
+  right: 10px;
+  bottom: 10px;
+  border-bottom: 2px solid #d4af37;
+  border-right: 2px solid #d4af37;
+}
+@media screen and (max-width: 600px) {
+  .background0 {
+    padding: 20px 18px;
+  }
 }
 
 .background1 {
-  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-  border-radius: 12px;
-  padding: 20px 25px;
-  margin: 15px 0;
-  border: 1px solid #dee2e6;
-  box-shadow: 0 2px 8px rgba(30, 42, 24, 0.15);
+  background: linear-gradient(135deg, rgba(22, 48, 58, 0.4) 0%, rgba(15, 26, 36, 0.5) 100%);
+  border: 1px solid rgba(22, 211, 184, 0.18);
+  border-radius: 8px;
+  padding: 18px 22px;
+  margin: 16px 0;
+  box-shadow: inset 0 0 26px rgba(0, 0, 0, 0.28);
 }
 
 .list-comp-card {
-  background: #ffffff;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(30, 42, 24, 0.15);
-  padding: 20px;
+  background: linear-gradient(160deg, rgba(15, 26, 36, 0.8) 0%, rgba(10, 15, 20, 0.8) 100%);
+  border: 1px solid rgba(95, 251, 228, 0.14);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  padding: 18px;
   margin: 20px 5px auto 5px;
-  border: 1px solid #dee2e6;
+  backdrop-filter: blur(5px);
   transition: all 0.3s ease;
   display: inline-block;
   width: 200px;
@@ -256,20 +342,22 @@ p {
   text-align: center;
 }
 .list-comp-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(30, 42, 24, 0.15);
+  transform: translateY(-6px);
+  border-color: #16d3b8;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 22px rgba(22, 211, 184, 0.3);
 }
 .list-comp-card .list-comp-title {
-  font-size: 1rem;
+  font-family: "Shippori Mincho", "Yu Mincho", YuMincho, "Hiragino Mincho ProN", "Noto Serif JP", serif;
+  font-size: 1.02rem;
   font-weight: 700;
-  color: #2d3f22;
-  margin-bottom: 10px;
+  color: #f5d67b;
+  margin: 10px 0;
 }
 .list-comp-card img.character-list-img {
   width: 100%;
-  border-radius: 10px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid rgba(212, 175, 55, 0.25);
 }
 @media screen and (max-width: 600px) {
   .list-comp-card {
@@ -280,18 +368,20 @@ p {
 }
 
 .list-comp-wide {
-  background: #ffffff;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(30, 42, 24, 0.15);
+  background: linear-gradient(160deg, rgba(15, 26, 36, 0.8) 0%, rgba(10, 15, 20, 0.8) 100%);
+  border: 1px solid rgba(95, 251, 228, 0.14);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
   padding: 20px;
   margin: 20px 0;
-  border: 1px solid #dee2e6;
+  backdrop-filter: blur(5px);
   display: flex;
   gap: 20px;
   transition: all 0.3s ease;
 }
 .list-comp-wide:hover {
-  box-shadow: 0 8px 25px rgba(30, 42, 24, 0.15);
+  border-color: #16d3b8;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.5), 0 0 22px rgba(22, 211, 184, 0.25);
 }
 .list-comp-wide .list-comp-wide-image {
   flex-shrink: 0;
@@ -299,17 +389,18 @@ p {
 }
 .list-comp-wide .list-comp-wide-image img {
   width: 100%;
-  border-radius: 10px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid rgba(212, 175, 55, 0.25);
 }
 .list-comp-wide .list-comp-wide-body {
   flex: 1;
 }
 .list-comp-wide .list-comp-title {
-  font-size: 1.1rem;
+  font-family: "Shippori Mincho", "Yu Mincho", YuMincho, "Hiragino Mincho ProN", "Noto Serif JP", serif;
+  font-size: 1.12rem;
   font-weight: 700;
-  color: #2d3f22;
+  color: #f5d67b;
   margin-bottom: 10px;
 }
 @media screen and (max-width: 800px) {
@@ -337,26 +428,43 @@ p {
   overflow-y: auto;
   white-space: normal;
 }
+.scroll-content::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+.scroll-content::-webkit-scrollbar-track {
+  background: rgba(10, 15, 20, 0.5);
+}
+.scroll-content::-webkit-scrollbar-thumb {
+  background: rgba(22, 211, 184, 0.4);
+  border-radius: 4px;
+}
+.scroll-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(22, 211, 184, 0.6);
+}
 
 .notice-block {
-  background: linear-gradient(135deg, rgba(232, 160, 58, 0.08) 0%, rgba(200, 124, 26, 0.05) 100%);
-  border: 1px solid rgba(200, 124, 26, 0.35);
-  border-radius: 8px;
-  padding: 15px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(255, 77, 77, 0.06) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 6px;
+  padding: 15px 16px;
   margin: 20px 0;
   font-size: 0.9rem;
-  color: #1e2a18;
+  color: #dfe9ee;
   position: relative;
 }
 .notice-block::before {
   content: "NOTICE";
   display: inline-block;
   margin-right: 8px;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #f5d67b;
 }
 .notice-block p {
   margin: 5px 0;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .modal-overlay {
@@ -365,7 +473,7 @@ p {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(30, 42, 24, 0.85);
+  background: rgba(10, 15, 20, 0.85);
   backdrop-filter: blur(10px);
   z-index: 2000;
   display: flex;
@@ -375,21 +483,60 @@ p {
 }
 
 .modal-content {
-  background: #ffffff;
-  border-radius: 20px;
+  background: linear-gradient(160deg, rgba(15, 26, 36, 0.96) 0%, rgba(10, 15, 20, 0.98) 100%);
+  color: #dfe9ee;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 12px;
   max-width: 700px;
   width: 100%;
   max-height: 80vh;
   overflow-y: auto;
-  padding: 30px;
+  padding: 32px;
+  box-shadow: 0 0 40px rgba(22, 211, 184, 0.2), 0 20px 60px rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+.modal-content::before, .modal-content::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+  z-index: 1;
+}
+.modal-content::before {
+  top: 10px;
+  left: 10px;
+  border-top: 2px solid #d4af37;
+  border-left: 2px solid #d4af37;
+}
+.modal-content::after {
+  right: 10px;
+  bottom: 10px;
+  border-bottom: 2px solid #d4af37;
+  border-right: 2px solid #d4af37;
 }
 
 footer {
-  background: linear-gradient(135deg, #1e2a18 0%, #2d3f22 100%);
-  color: #ffffff;
-  padding: 30px 20px;
-  margin-top: 40px;
+  background: linear-gradient(180deg, rgba(15, 26, 36, 0.9) 0%, #0a0f14 100%);
+  color: #dfe9ee;
+  padding: 36px 20px 30px;
+  margin-top: 48px;
   text-align: center;
+  position: relative;
+  border-top: 1px solid rgba(212, 175, 55, 0.35);
+}
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 14px;
+  background-image: url("/img/pattern-thunder.svg");
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: auto 100%;
+  opacity: 0.85;
 }
 footer #app-credit {
   max-width: 900px;
@@ -399,14 +546,15 @@ footer .license {
   margin: 15px 0;
 }
 footer .license p {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(223, 233, 238, 0.85);
   font-size: 0.85rem;
 }
 footer .license a {
-  color: #e8a03a;
+  color: #f5d67b;
   text-decoration: none;
 }
 footer .license a:hover {
+  color: #5ffbe4;
   text-decoration: underline;
 }
 footer .license img {
@@ -417,14 +565,17 @@ footer .credits {
   margin-top: 15px;
 }
 footer .credits p {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(223, 233, 238, 0.85);
   font-size: 0.85rem;
   margin: 5px 0;
 }
 footer .credits a {
-  color: #e8a03a;
+  color: #f5d67b;
   text-decoration: none;
 }
 footer .credits a:hover {
+  color: #5ffbe4;
   text-decoration: underline;
-}/*# sourceMappingURL=stylesheet.css.map */
+}
+
+/*# sourceMappingURL=stylesheet.css.map */
