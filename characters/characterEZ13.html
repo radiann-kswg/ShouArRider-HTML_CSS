@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="/stylesheet.css" />
+	<link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script src="https://cdn.jsdelivr.net/npm/vue@3.5.13"></script>
+	<script>
+		window.Vue ||
+			document.write(
+				'<script src="https://unpkg.com/vue@3.5.13/dist/vue.global.prod.js"><\/script>',
+			);
+	</script>
+	<title>獣爾騎兵 -「寅刻ネゝコ」</title>
+	<meta
+		name="description"
+		content="「獣爾騎兵」は、ラジアン(柏木主税)による一次創作作品です。十二支をベースにした獣人型改造人間「獣爾騎兵」の13番手・寅刻ネゝコの紹介ページ。" />
+</head>
+
+<body>
+	<header>
+		<div id="app-menu">
+			<hamberger-menu></hamberger-menu>
+		</div>
+		<script src="/src/hamberger-menu.js"></script>
+	</header>
+	<main id="app-character-page">
+		<character-page-comp>
+			<template #title>寅刻ネゝコ</template>
+			<template #reading>とらのこくネネコ</template>
+			<template #formalname>姚.恋華（ヤオ.リアンファ）</template>
+
+			猫の耳と尻尾が特徴的な獣爾騎兵の13番手。<br />
+			3番手の寅刻コーガを兄に持ち、様々な空間への潜入を得意とする。<br />
+			人懐っこい性格や戦闘向けではない能力のこともあり、他の兵員よりも平和的で交流意欲旺盛な一面が伺える。<br />
+			ただ獣爾騎兵の兵長である子刻ハッカに対しては、昔から弱みを握られていることもあり あまり好意的な態度を示さない様子。
+
+			<template #beast>猫</template>
+			<template #riderno>13番手</template>
+			<template #gender>女性</template>
+			<template #conceptage>21</template>
+			<template #height>145cm</template>
+			<template #weight>43kg</template>
+			<template #birthday>2月9日</template>
+			<template #belonging>獣爾騎兵</template>
+			<template #beastspecname>軟体／着地</template>
+			<template #beastspecabout>関節や骨格を極限まで柔らかく動かす／着地時に受け身を執ることで高所からの落下に耐える</template>
+			<template #characteristic>甘えん坊な猫語の猫被り／人懐っこい</template>
+			<template #hobby>寝ること</template>
+			<template #skill>卓球</template>
+			<template #favors>狭くてふかふかに包まれた寝床</template>
+			<template #unlikes>子刻ハッカ／無力な自分</template>
+			<template #characterimage>
+				<img alt="寅刻ネゝコ" src="/img/art/art_imgEZ13.png" class="character-img" />
+			</template>
+		</character-page-comp>
+	</main>
+	<script src="/src/character-page.js"></script>
+	<footer>
+		<div id="app-credit">
+			<footer-credit></footer-credit>
+		</div>
+		<script src="/src/credit-footer.js"></script>
+	</footer>
+</body>
+
+</html>

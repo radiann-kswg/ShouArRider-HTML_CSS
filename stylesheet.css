@@ -169,6 +169,13 @@ h2 {
   box-shadow: -1px 0 12px rgba(212, 175, 55, 0.25);
   text-shadow: 0 0 12px rgba(22, 211, 184, 0.22);
 }
+h2 .char-reading {
+  font-family: "Shippori Mincho", "Yu Mincho", YuMincho, "Hiragino Mincho ProN", "Noto Serif JP", serif;
+  display: inline-block;
+  color: #9fb2bd;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
 
 .h2-a-link {
   font-family: "Shippori Mincho", "Yu Mincho", YuMincho, "Hiragino Mincho ProN", "Noto Serif JP", serif;
@@ -327,6 +334,110 @@ p {
   box-shadow: inset 0 0 26px rgba(0, 0, 0, 0.28);
 }
 
+.char-formalname {
+  font-family: "Shippori Mincho", "Yu Mincho", YuMincho, "Hiragino Mincho ProN", "Noto Serif JP", serif;
+  display: block;
+  color: #f5d67b;
+  font-size: 0.98rem;
+  letter-spacing: 0.06em;
+  margin: 2px 0 0 2px;
+  text-shadow: 0 0 10px rgba(22, 211, 184, 0.22);
+}
+
+.character0 {
+  max-width: 900px;
+  margin: 20px auto 0;
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 20px 24px;
+  align-items: start;
+}
+.character0 img.character-img {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: start;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 18px rgba(22, 211, 184, 0.12);
+  background: rgba(10, 15, 20, 0.4);
+}
+.character0 div.character1 {
+  min-width: 0;
+  text-align: left;
+  background: linear-gradient(135deg, rgba(22, 48, 58, 0.4) 0%, rgba(15, 26, 36, 0.5) 100%);
+  border: 1px solid rgba(22, 211, 184, 0.18);
+  border-radius: 8px;
+  padding: 20px 24px;
+  box-shadow: inset 0 0 26px rgba(0, 0, 0, 0.28);
+}
+.character0 div.character1 p {
+  margin: 10px 0;
+}
+.character0 div.character1:first-child {
+  grid-column: 2;
+  grid-row: 1/span 2;
+  align-self: stretch;
+}
+.character0 img.character-img + div.character1 {
+  grid-column: 1;
+  grid-row: 2;
+}
+.character0 img.character-img + div.character1 p.p-block {
+  display: block;
+  width: 100%;
+  margin: 6px 0;
+}
+.character0 div.character2 {
+  grid-column: 1/-1;
+  grid-row: 3;
+  margin-top: 4px;
+  min-width: 0;
+  text-align: left;
+  background: linear-gradient(135deg, rgba(22, 48, 58, 0.4) 0%, rgba(15, 26, 36, 0.5) 100%);
+  border: 1px solid rgba(22, 211, 184, 0.18);
+  border-radius: 8px;
+  padding: 20px 24px;
+  box-shadow: inset 0 0 26px rgba(0, 0, 0, 0.28);
+}
+.character0 div.character2 p {
+  margin: 10px 0;
+}
+.character0 div.character2 p.p-block {
+  display: block;
+  width: 100%;
+  margin: 6px 0;
+}
+@media screen and (max-width: 800px) {
+  .character0 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .character0 img.character-img {
+    grid-column: 1;
+    grid-row: auto;
+    order: -1;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+  .character0 div.character1:first-child {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .character0 img.character-img + div.character1 {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .character0 div.character2 {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
+
+.h2-wide {
+  display: block;
+  width: 100%;
+}
+
 .list-comp-card {
   background: linear-gradient(160deg, rgba(15, 26, 36, 0.8) 0%, rgba(10, 15, 20, 0.8) 100%);
   border: 1px solid rgba(95, 251, 228, 0.14);
@@ -353,10 +464,10 @@ p {
   color: #f5d67b;
   margin: 10px 0;
 }
-.list-comp-card img.character-list-img {
+.list-comp-card img {
   width: 100%;
+  height: auto;
   border-radius: 8px;
-  object-fit: cover;
   border: 1px solid rgba(212, 175, 55, 0.25);
 }
 @media screen and (max-width: 600px) {

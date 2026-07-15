@@ -1,57 +1,99 @@
 <!doctype html>
 <html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="/stylesheet.css" />
-    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/vue@3.5.13"></script>
-    <script>
-      window.Vue ||
-        document.write(
-          '<script src="https://unpkg.com/vue@3.5.13/dist/vue.global.prod.js"><\/script>',
-        );
-    </script>
-    <title>キャラクター一覧 - 獣爾騎兵</title>
-    <meta
-      name="description"
-      content="「獣爾騎兵」は、ラジアン(柏木主税)による一次創作作品です。"
-    />
-  </head>
-  <body>
-    <header>
-      <div id="app-menu">
-        <hamberger-menu></hamberger-menu>
-      </div>
-      <script src="/src/hamberger-menu.js"></script>
-    </header>
-    <main id="app-list-comp">
-      <h1>キャラクター一覧</h1>
 
-      <div class="background0">
-        <h2>獣爾騎兵</h2>
-        <!-- キャラクターカードは author が list-comp コンポーネントを使って追加してください -->
-        <!--
-          使用例:
-          <list-comp>
-            <template #title>キャラクター名</template>
-            <template #imagelink>
-              <a href="/characters/chara-xxx.html">
-                <img alt="キャラクター名" src="/img/xxx.png" class="character-list-img" />
-              </a>
-            </template>
-            <a class="a-link" href="/characters/chara-xxx.html">詳細を見る</a>
-          </list-comp>
-        -->
-        <p>（キャラクター一覧をここに追加）</p>
-      </div>
-    </main>
-    <footer>
-      <div id="app-credit">
-        <footer-credit></footer-credit>
-      </div>
-    </footer>
-    <script src="/src/list-components.js"></script>
-    <script src="/src/credit-footer.js"></script>
-  </body>
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="/stylesheet.css" />
+	<link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script src="https://cdn.jsdelivr.net/npm/vue@3.5.13"></script>
+	<script>
+		window.Vue ||
+			document.write(
+				'<script src="https://unpkg.com/vue@3.5.13/dist/vue.global.prod.js"><\/script>',
+			);
+	</script>
+	<title>キャラクター一覧 - 獣爾騎兵</title>
+	<meta
+		name="description"
+		content="「獣爾騎兵」は、ラジアン(柏木主税)による一次創作作品です。" />
+</head>
+
+<body>
+	<header>
+		<div id="app-menu">
+			<hamberger-menu></hamberger-menu>
+		</div>
+		<script src="/src/hamberger-menu.js"></script>
+	</header>
+	<main id="app-list-comp">
+		<h1>キャラクター一覧</h1>
+
+		<div class="background0">
+			<h2>獣爾騎兵</h2>
+			<list-comp>
+				<template #title>子刻ハッカ</template>
+				<template #imagelink>
+					<a href="/characters/characterEZ1.html">
+						<img alt="子刻ハッカ" src="/img/cnsp/cnsp_imgEZ1.png" class="character-list-img" />
+					</a>
+				</template>
+				<a class="a-link" href="/characters/characterEZ1.html">詳細を見る</a>
+			</list-comp>
+			<list-comp>
+				<template #title>卯刻ハネゝカ</template>
+				<template #imagelink>
+					<a href="/characters/characterEZ4.html">
+						<img alt="卯刻ハネゝカ" src="/img/art/art_imgEZ4.png" class="character-list-img" />
+					</a>
+				</template>
+				<a class="a-link" href="/characters/characterEZ4.html">詳細を見る</a>
+			</list-comp>
+			<list-comp>
+				<template #title>辰刻リウロン</template>
+				<template #imagelink>
+					<a href="/characters/characterEZ5.html">
+						<img alt="辰刻リウロン" src="/img/art/art_imgEZ5.png" class="character-list-img" />
+					</a>
+				</template>
+				<a class="a-link" href="/characters/characterEZ5.html">詳細を見る</a>
+			</list-comp>
+			<list-comp>
+				<template #title>巳刻カミツ</template>
+				<template #imagelink>
+					<a href="/characters/characterEZ6.html">
+						<img alt="巳刻カミツ" src="/img/art/art_imgEZ6A.png" class="character-list-img" />
+					</a>
+				</template>
+				<a class="a-link" href="/characters/characterEZ6.html">詳細を見る</a>
+			</list-comp>
+			<list-comp>
+				<template #title>午刻ハヤテ</template>
+				<template #imagelink>
+					<a href="/characters/characterEZ7.html">
+						<img alt="午刻ハヤテ" src="/img/art/art_imgEZ7.png" class="character-list-img" />
+					</a>
+				</template>
+				<a class="a-link" href="/characters/characterEZ7.html">詳細を見る</a>
+			</list-comp>
+			<list-comp>
+				<template #title>寅刻ネゝコ</template>
+				<template #imagelink>
+					<a href="/characters/characterEZ13.html">
+						<img alt="寅刻ネゝコ" src="/img/art/art_imgEZ13.png" class="character-list-img" />
+					</a>
+				</template>
+				<a class="a-link" href="/characters/characterEZ13.html">詳細を見る</a>
+			</list-comp>
+		</div>
+	</main>
+	<footer>
+		<div id="app-credit">
+			<footer-credit></footer-credit>
+		</div>
+	</footer>
+	<script src="/src/list-components.js"></script>
+	<script src="/src/credit-footer.js"></script>
+</body>
+
 </html>

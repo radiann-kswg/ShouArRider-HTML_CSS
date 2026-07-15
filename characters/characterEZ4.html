@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="/stylesheet.css" />
+	<link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script src="https://cdn.jsdelivr.net/npm/vue@3.5.13"></script>
+	<script>
+		window.Vue ||
+			document.write(
+				'<script src="https://unpkg.com/vue@3.5.13/dist/vue.global.prod.js"><\/script>',
+			);
+	</script>
+	<title>獣爾騎兵 -「卯刻ハネゝカ」</title>
+	<meta
+		name="description"
+		content="「獣爾騎兵」は、ラジアン(柏木主税)による一次創作作品です。十二支をベースにした獣人型改造人間「獣爾騎兵」の4番手・卯刻ハネゝカの紹介ページ。" />
+</head>
+
+<body>
+	<header>
+		<div id="app-menu">
+			<hamberger-menu></hamberger-menu>
+		</div>
+		<script src="/src/hamberger-menu.js"></script>
+	</header>
+	<main id="app-character-page">
+		<character-page-comp>
+			<template #title>卯刻ハネゝカ</template>
+			<template #reading>うのこくハネネカ</template>
+
+			兎の耳と尻尾が特徴的な獣爾騎兵の4番手。<br />
+			ジャンプやダッシュなどに長けた高い機動力を持ち、身軽で細々とした体つきによらず獣爾騎兵の中でパワー型の戦闘要因を買って出ている。<br />
+			お転婆で元気溌剌とした気質で身体を動かすことを好んでいるものの、戦闘用に使用している武器の兼ね合いで餅つきだけは強いトラウマがあり 積極的に参入できずにいる。
+
+			<template #beast>卯（うさぎ）</template>
+			<template #riderno>4番手</template>
+			<template #gender>女性</template>
+			<template #conceptage>19</template>
+			<template #height>144cm</template>
+			<template #weight>非公開</template>
+			<template #birthday>3月19日</template>
+			<template #belonging>獣爾騎兵</template>
+			<template #beastspecname>跳躍</template>
+			<template #beastspecabout>優れた脚力でジャンプやダッシュなどの機動力を上げる</template>
+			<template #characteristic>お転婆で活発</template>
+			<template #hobby>ランニング</template>
+			<template #skill>鑑開き（物理的に）</template>
+			<template #favors>餅、身体を動かすイベント</template>
+			<template #unlikes>餅つき</template>
+			<template #characterimage>
+				<img alt="卯刻ハネゝカ" src="/img/art/art_imgEZ4.png" class="character-img" />
+			</template>
+		</character-page-comp>
+	</main>
+	<script src="/src/character-page.js"></script>
+	<footer>
+		<div id="app-credit">
+			<footer-credit></footer-credit>
+		</div>
+		<script src="/src/credit-footer.js"></script>
+	</footer>
+</body>
+
+</html>

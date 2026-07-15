@@ -87,7 +87,7 @@ $opacity: 0.8
 	display: block
 
 @mixin medium-dualblock
-	width: 48%
+	width: 42%
 	max-width: 750px
 	margin: 10px 10px
 	box-sizing: border-box
@@ -98,10 +98,10 @@ $opacity: 0.8
 	margin: 0 auto
 	box-sizing: border-box
 	img.character-img
-		width: 48%
+		width: 40%
 		box-shadow: 7px 7px 5px rgba($primary-dark, 0.6), 0 0 18px rgba($accent-jade, 0.15)
 		vertical-align: top
-		margin: 20px 0 0 20px
+		margin: 20px 0 0 0
 		box-sizing: border-box
 		border-radius: 10px
 		border: 1px solid rgba($accent-gold, 0.25)
@@ -118,6 +118,11 @@ $opacity: 0.8
 	margin: 0 auto
 	box-sizing: border-box
 	max-width: 900px
+
+@mixin div-pageblock1
+	margin: 20px auto
+	display: inline-block
+	vertical-align: top
 
 // リンクボタン: 藍墨のガラス地 + 金の縁 → hover で翡翠に発光
 @mixin a-link($bg-color, $bg-color-hover)
@@ -317,6 +322,12 @@ h2
 	border-left: 3px solid $accent-gold
 	box-shadow: -1px 0 12px rgba($accent-gold, 0.25)
 	text-shadow: 0 0 12px rgba($accent-jade, 0.22)
+	.char-reading
+		@include font-serif
+		display: inline-block
+		color: $text-muted
+		font-size: 0.85rem
+		letter-spacing: 0.04em
 
 .h2-a-link
 	@include font-serif
@@ -410,6 +421,101 @@ p
 	margin: 16px 0
 	box-shadow: inset 0 0 26px rgba(0, 0, 0, 0.28)
 
+// ===== キャラクター詳細ページ =====
+// サブネーム（官名）
+.char-formalname
+	@include font-serif
+	display: block
+	color: $light-gold
+	font-size: 0.98rem
+	letter-spacing: 0.06em
+	margin: 2px 0 0 2px
+	text-shadow: 0 0 10px rgba($accent-jade, 0.22)
+
+// 立ち絵＋基本データ（左カラム）／ 本文（右カラム）→ 詳細プロフィール（全幅）
+.character0
+	max-width: 900px
+	margin: 20px auto 0
+	display: grid
+	grid-template-columns: minmax(0, 5fr) minmax(0, 7fr)
+	gap: 20px 24px
+	align-items: start
+	// 立ち絵（左・上）
+	img.character-img
+		grid-column: 1
+		grid-row: 1
+		align-self: start
+		width: 100%
+		border-radius: 10px
+		border: 1px solid rgba($accent-gold, 0.3)
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 18px rgba($accent-jade, 0.12)
+		background: rgba($primary-dark, 0.4)
+	// パネル共通（本文 / 基本データ）
+	div.character1
+		min-width: 0
+		text-align: left
+		background: linear-gradient(135deg, rgba($light-dark, 0.4) 0%, rgba($secondary-dark, 0.5) 100%)
+		border: 1px solid rgba($accent-jade, 0.18)
+		border-radius: 8px
+		padding: 20px 24px
+		box-shadow: inset 0 0 26px rgba(0, 0, 0, 0.28)
+		p
+			margin: 10px 0
+	// 本文（右カラム・縦スパン）
+	div.character1:first-child
+		grid-column: 2
+		grid-row: 1 / span 2
+		align-self: stretch
+	// 基本データ（左・下＝立ち絵の直後）
+	img.character-img + div.character1
+		grid-column: 1
+		grid-row: 2
+		p.p-block
+			display: block
+			width: 100%
+			margin: 6px 0
+	// 詳細プロフィール（全幅・2カラム）
+	div.character2
+		grid-column: 1 / -1
+		grid-row: 3
+		margin-top: 4px
+		min-width: 0
+		text-align: left
+		background: linear-gradient(135deg, rgba($light-dark, 0.4) 0%, rgba($secondary-dark, 0.5) 100%)
+		border: 1px solid rgba($accent-jade, 0.18)
+		border-radius: 8px
+		padding: 20px 24px
+		box-shadow: inset 0 0 26px rgba(0, 0, 0, 0.28)
+		p
+			margin: 10px 0
+		p.p-block
+			display: block
+			width: 100%
+			margin: 6px 0
+	// レスポンシブ: 1カラムに集約（画像→本文→基本→詳細）
+	@media screen and (max-width: $responsive-midiumsize)
+		grid-template-columns: minmax(0, 1fr)
+		img.character-img
+			grid-column: 1
+			grid-row: auto
+			order: -1
+			max-width: 380px
+			margin: 0 auto
+		div.character1:first-child
+			grid-column: 1
+			grid-row: auto
+		img.character-img + div.character1
+			grid-column: 1
+			grid-row: auto
+		div.character2
+			grid-column: 1
+			grid-row: auto
+
+// タイトル見出しを横幅いっぱいに（wide-style prop 用）
+.h2-wide
+	display: block
+	width: 100%
+
 // ===== リストコンポーネント =====
 .list-comp-card
 	background: linear-gradient(160deg, rgba($secondary-dark, 0.8) 0%, rgba($primary-dark, 0.8) 100%)
@@ -434,10 +540,10 @@ p
 		font-weight: 700
 		color: $light-gold
 		margin: 10px 0
-	img.character-list-img
+	img
 		width: 100%
+		height: auto
 		border-radius: 8px
-		object-fit: cover
 		border: 1px solid rgba($accent-gold, 0.25)
 	@media screen and (max-width: $responsive-smallsize)
 		width: 100%

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="/stylesheet.css" />
+	<link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script src="https://cdn.jsdelivr.net/npm/vue@3.5.13"></script>
+	<script>
+		window.Vue ||
+			document.write(
+				'<script src="https://unpkg.com/vue@3.5.13/dist/vue.global.prod.js"><\/script>',
+			);
+	</script>
+	<title>獣爾騎兵 -「巳刻カミツ」</title>
+	<meta
+		name="description"
+		content="「獣爾騎兵」は、ラジアン(柏木主税)による一次創作作品です。十二支をベースにした獣人型改造人間「獣爾騎兵」の6番手・巳刻カミツの紹介ページ。" />
+</head>
+
+<body>
+	<header>
+		<div id="app-menu">
+			<hamberger-menu></hamberger-menu>
+		</div>
+		<script src="/src/hamberger-menu.js"></script>
+	</header>
+	<main id="app-character-page">
+		<character-page-comp>
+			<template #title>巳刻カミツ</template>
+			<template #reading>みのこくカミツ</template>
+			<template #formalname>花.花琳（ホゥア.フアリン）</template>
+
+			大きな尻尾と鱗肌が特徴的な獣爾騎兵の6番手。<br />
+			大蛇への変身能力を持ち、この形態から蛇特有な潜入動作と拘束技を得意としている。<br />
+			呑気で温厚な性格と、生い立ちなど一切の個人情報が謎に包まれていることから、“のじゃロリ”として神秘的に親しまれている一面がある。<br />
+			ただ、お酒が入ったときや欲情気味になっているときは極めて危険な悪絡みを仕掛けてくるため、宴席へ誘う際は覚悟をしないといけないとも。
+
+			<template #beast>巳（へび）</template>
+			<template #riderno>6番手</template>
+			<template #gender>女性</template>
+			<template #conceptage>？？？</template>
+			<template #height>157cm</template>
+			<template #weight>？？？</template>
+			<template #birthday>5月25日（本人は「旧暦の誕生日だからあてにならん」と主張）</template>
+			<template #belonging>獣爾騎兵</template>
+			<template #beastspecname>束縛形態</template>
+			<template #beastspecabout>四肢を納めて大蛇の姿になることで、巻き付きや匍匐(ほふく)行動など特殊な潜入動作を可能にする</template>
+			<template #characteristic>能天気なのじゃロリ／破廉恥</template>
+			<template #hobby>飲酒／セッ●ス</template>
+			<template #favors>果実酒</template>
+			<template #unlikes>催促</template>
+			<template #characterimage>
+				<img alt="巳刻カミツ" src="/img/art/art_imgEZ6A.png" class="character-img" />
+			</template>
+		</character-page-comp>
+	</main>
+	<script src="/src/character-page.js"></script>
+	<footer>
+		<div id="app-credit">
+			<footer-credit></footer-credit>
+		</div>
+		<script src="/src/credit-footer.js"></script>
+	</footer>
+</body>
+
+</html>

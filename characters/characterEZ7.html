@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="/stylesheet.css" />
+	<link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script src="https://cdn.jsdelivr.net/npm/vue@3.5.13"></script>
+	<script>
+		window.Vue ||
+			document.write(
+				'<script src="https://unpkg.com/vue@3.5.13/dist/vue.global.prod.js"><\/script>',
+			);
+	</script>
+	<title>獣爾騎兵 -「午刻ハヤテ」</title>
+	<meta
+		name="description"
+		content="「獣爾騎兵」は、ラジアン(柏木主税)による一次創作作品です。十二支をベースにした獣人型改造人間「獣爾騎兵」の7番手・午刻ハヤテの紹介ページ。" />
+</head>
+
+<body>
+	<header>
+		<div id="app-menu">
+			<hamberger-menu></hamberger-menu>
+		</div>
+		<script src="/src/hamberger-menu.js"></script>
+	</header>
+	<main id="app-character-page">
+		<character-page-comp>
+			<template #title>午刻ハヤテ</template>
+			<template #reading>うまのこくハヤテ</template>
+			<template #formalname>ルドルフ.コーナー</template>
+
+			褐色肌から生える立耳と長くしなやかな尻尾が特徴的な改造人間「獣爾騎兵」の7番手。<br />
+			高い走破性と車両などの牽引能力を持ち、体の身軽さからは考えられない強靭で高機動力な移動戦を得意としている。<br />
+			龍天国に本拠点を持つ獣爾騎兵の中では唯一 雄志結国の出身であるためか、兵員から異国風な印象を受けられているようだ。<br />
+			そんな中 競技や共闘に極めて積極的な性格である彼には、雄志結国と龍天国の関係が日々悪化するばかりの世界情勢に ある使命感を抱いているとか。
+
+			<template #beast>午（うま）</template>
+			<template #riderno>7番手</template>
+			<template #gender>男性</template>
+			<template #conceptage>33</template>
+			<template #height>180cm</template>
+			<template #weight>63kg</template>
+			<template #birthday>6月12日</template>
+			<template #belonging>獣爾騎兵</template>
+			<template #beastspecname>牽引突破</template>
+			<template #beastspecabout>馬力と俊敏性の高い走破で移動戦に持ち込む</template>
+			<template #characteristic>競技意識や団結意識の高い異国風</template>
+			<template #hobby>賭け事</template>
+			<template #favors>ランニング</template>
+			<template #unlikes>怪我や病欠</template>
+			<template #characterimage>
+				<img alt="午刻ハヤテ" src="/img/art/art_imgEZ7.png" class="character-img" />
+			</template>
+		</character-page-comp>
+	</main>
+	<script src="/src/character-page.js"></script>
+	<footer>
+		<div id="app-credit">
+			<footer-credit></footer-credit>
+		</div>
+		<script src="/src/credit-footer.js"></script>
+	</footer>
+</body>
+
+</html>
