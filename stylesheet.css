@@ -501,7 +501,8 @@ p {
 .list-comp-wide .list-comp-wide-image img {
   width: 100%;
   border-radius: 8px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border: 1px solid rgba(212, 175, 55, 0.25);
 }
 .list-comp-wide .list-comp-wide-body {
@@ -687,6 +688,4 @@ footer .credits a {
 footer .credits a:hover {
   color: #5ffbe4;
   text-decoration: underline;
-}
-
-/*# sourceMappingURL=stylesheet.css.map */
+}/*# sourceMappingURL=stylesheet.css.map */

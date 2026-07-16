@@ -1,0 +1,57 @@
+// story-style.sass — 獣爾騎兵 公式ＳＳ連載ページ専用スタイル
+// ※ 本体 stylesheet.sass が編集作業中のため、独立ファイルとして追加している。
+//    作業が落ち着いたら本体 stylesheet.sass への統合を検討してください（色は本体パレット準拠）。
+// 配色メモ: $primary-dark #0a0f14 / $accent-jade #16d3b8 / $light-gold #f5d67b / $text-muted #9fb2bd
+
+// ===== Mixins =====
+@mixin font-sansserif
+	font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif
+
+// 見出し用の明朝系（中華・伝統の"格"を担う）
+@mixin font-serif
+	font-family: "Shippori Mincho", "Yu Mincho", YuMincho, "Hiragino Mincho ProN", "Noto Serif JP", serif
+
+// 初出情報（タイトル下の右寄せ注記）
+.story-date
+	text-align: right
+	color: #9fb2bd
+	font-size: 0.85rem
+	margin: -6px 0 14px
+
+// 小説本文（明朝・広め行間・ルビ対応）
+.story-body
+	font-family: "Shippori Mincho", "Yu Mincho", YuMincho, "Hiragino Mincho ProN", "Noto Serif JP", serif
+	line-height: 2.1
+	font-size: 1rem
+	p
+		@include font-serif
+		font-family: inherit
+		line-height: inherit
+		margin: 16px 0
+	ruby
+		@include font-serif
+		ruby-align: center
+		rt
+			@include font-sansserif
+			font-size: 0.55em
+			color: #f5d67b
+			letter-spacing: 0.05em
+	small
+		display: block
+		margin-top: 24px
+		color: #9fb2bd
+		font-size: 0.8rem
+		text-align: center
+
+// 前後編の区切り（合本ページ用）
+.story-part-divider
+	text-align: center
+	color: #16d3b8
+	letter-spacing: 1em
+	text-indent: 1em
+	margin: 34px 0
+
+// 前後幕ナビゲーション
+.story-nav
+	margin: 30px 0
+	text-align: center
