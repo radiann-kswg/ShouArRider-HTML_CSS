@@ -1,4 +1,4 @@
-# CLAUDE.md — ShouArRider-HTML_CSS
+# CLAUDE.md — ShauErRider-HTML_CSS
 
 > Claude Desktop（Cowork）/ Claude Code 用の入口です。
 > 共通設定の正本は下記ファイルです。本文をこのファイルへ転記しないでください。

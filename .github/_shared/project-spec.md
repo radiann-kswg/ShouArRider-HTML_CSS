@@ -1,4 +1,4 @@
-# ShouArRider-HTML_CSS — プロジェクト技術仕様（SSOT）
+# ShauErRider-HTML_CSS — プロジェクト技術仕様（SSOT）
 
 > 本ファイルは、Claude・Codex・GitHub Copilot など、本リポジトリで作業する
 > すべての AI エージェントが共有するプロジェクト技術仕様の正本です。
@@ -55,7 +55,7 @@ GitHub Pages での公開を前提とした静的サイトであり、作品概�
 ## ディレクトリ構造
 
 ```
-ShouArRider-HTML_CSS/
+ShauErRider-HTML_CSS/
 ├── index.html                      # サイトトップ
 ├── characters.html                 # キャラクター一覧
 ├── stylesheet.sass                 # SASS の正本

@@ -1,4 +1,4 @@
-# GitHub Copilot 指示書 — ShouArRider-HTML_CSS
+# GitHub Copilot 指示書 — ShauErRider-HTML_CSS
 
 > GitHub Copilot 用の入口です。共通設定の正本は別ファイルにあります。
 

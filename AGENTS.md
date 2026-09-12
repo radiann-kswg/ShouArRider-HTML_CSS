@@ -1,4 +1,4 @@
-# AGENTS.md — ShouArRider-HTML_CSS
+# AGENTS.md — ShauErRider-HTML_CSS
 
 > OpenAI Codex などの AI エージェント用入口です。
 > 運用ルール、技術仕様、ロールプレイ設定の正本は分離されています。

@@ -1,6 +1,6 @@
 # AI エージェント共通運用ポリシー（SSOT）
 
-本ファイルは ShouArRider-HTML_CSS で作業する Claude・Codex・GitHub Copilot などに共通する運用ポリシーの正本です。
+本ファイルは ShauErRider-HTML_CSS で作業する Claude・Codex・GitHub Copilot などに共通する運用ポリシーの正本です。
 
 ## 基本ルール
 
