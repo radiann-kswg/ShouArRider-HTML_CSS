@@ -1,7 +1,7 @@
-# 獣爾騎兵サイト ドメイン移管手順（shauer-riders.com → shauer-riders.com）
+# 獣爾騎兵サイト ドメイン移管手順（shouar-riders.com → shauer-riders.com）
 
 作成: 2026-09-12 / 対象リポジトリ: ShauErRider-HTML_CSS（GitHub Pages, radiann-kswg）
-現状: `www.shauer-riders.com` を CNAME に設定し、Cloudflare（NS: ali / nash）で apex・www とも Proxied（オレンジ雲）運用。
+現状: `www.shouar-riders.com` を CNAME に設定し、Cloudflare（NS: ali / nash）で apex・www とも Proxied（オレンジ雲）運用。
 
 正規 URL は現行と同じく **`https://www.shauer-riders.com/`**（www あり）とし、apex は www へ寄せる。
 
@@ -11,21 +11,21 @@
 
 | リポジトリ | ファイル | 変更 |
 | --- | --- | --- |
-| ShauErRider-HTML_CSS (main) | `CNAME` | `www.shauer-riders.com` → `www.shauer-riders.com` |
+| ShauErRider-HTML_CSS (main) | `CNAME` | `www.shouar-riders.com` → `www.shauer-riders.com` |
 | RadianNs_WebSite (develop) | `index.html` L59, L122 / `src/hamberger-menu.js` L24 | リンク先 URL を新ドメインへ |
 
 - `CNAME` の push は **手順 3 の直前**まで待つこと（先に push すると GitHub 側が新ドメインを検証しに行き、DNS 未設定だと Pages がカスタムドメインなし状態になって旧ドメインでも一時的に落ちる）。
-- RadianNs_WebSite 側のリンク文言「Shou'ar Riders Official」と画像パス `img/news_contents/shauer-riders/` は据え置き（作者管理領域。表記も変えるなら別途）。
+- RadianNs_WebSite 側のリンク文言「Shou'ar Riders Official」と画像パス `img/news_contents/shouar-riders/` は据え置き（作者管理領域。表記も変えるなら別途）。
 
 ## 1. ドメイン取得（Cloudflare Registrar）
 
 1. Cloudflare ダッシュボード → Domain Registration → Register Domains → `shauer-riders.com` を検索して購入。
 2. 自動的に同アカウントのゾーンとして追加され、NS も Cloudflare になる（別レジストラなら Add a Site → NS 変更が必要）。
-3. WHOIS 情報は shauer-riders.com と同じ内容にしておく（プライバシー保護は既定で ON）。
+3. WHOIS 情報は shouar-riders.com と同じ内容にしておく（プライバシー保護は既定で ON）。
 
 ## 2. 新ゾーン `shauer-riders.com` の DNS
 
-shauer-riders.com のレコードを鏡写しにする。
+shouar-riders.com のレコードを鏡写しにする。
 
 | Type | Name | Content | Proxy |
 | --- | --- | --- | --- |
@@ -53,59 +53,61 @@ curl.exe -sI https://www.shauer-riders.com/ | Select-String 'HTTP/|location'
 curl.exe -sI https://shauer-riders.com/     | Select-String 'HTTP/|location'   # → www へ 301
 ```
 
-## 4. 旧ドメイン `shauer-riders.com` → 新ドメインへ 301
+## 4. 旧ドメイン `shouar-riders.com` → 新ドメインへ 301（2026-09-12 実施済み）
 
-Cloudflare の Redirect Rules（Rules → Redirect Rules → Create rule）を旧ゾーンに 1 本追加する。DNS レコードは削除せずそのまま Proxied で残す（Proxied でないとルールが効かない。GitHub 側からは既に外れているので実体は不要）。
+旧ゾーンの Cloudflare Redirect Rules に 1 本デプロイ済み。DNS レコード（apex A×4 / www CNAME、Proxied）は残したまま。
 
 - Rule name: `Redirect to shauer-riders.com`
-- When incoming requests match: **Custom filter expression**
-  ```
-  (http.host eq "shauer-riders.com") or (http.host eq "www.shauer-riders.com")
-  ```
-  （ゾーン全体でよければ「All incoming requests」でも可）
-- Then: **Dynamic**
-  ```
-  concat("https://www.shauer-riders.com", http.request.uri.path)
-  ```
-- Status code: **301**
-- Preserve query string: **ON**
+- マッチ: ワイルドカード パターン `https://*shouar-riders.com/*`
+- ターゲット: `https://www.shauer-riders.com/${2}`（301、クエリ文字列を保存: ON）
+- 併せて SSL/TLS → エッジ証明書 → **常に HTTPS を使用** を ON（http:// はワイルドカードに当たらず 404 になっていたため）
 
-動作確認:
+検証結果（User の PC から curl）:
+
+```
+http://www.shouar-riders.com/             → 301 https://www.shouar-riders.com/ → 301 https://www.shauer-riders.com/ → 200
+http://shouar-riders.com/characters.html?a=1 → 301 → 301 https://www.shauer-riders.com/characters.html?a=1 → 200
+https://shouar-riders.com/stories.html    → 301 https://www.shauer-riders.com/stories.html
+https://shauer-riders.com/                → 301 https://www.shauer-riders.com/（GitHub Pages の apex→www）
+```
+
+再検証コマンド:
 
 ```powershell
-curl.exe -sI "https://www.shauer-riders.com/characters.html?x=1" | Select-String 'HTTP/|location'
-# → HTTP/1.1 301 / location: https://www.shauer-riders.com/characters.html?x=1
-curl.exe -sI http://shauer-riders.com/stories.html | Select-String 'HTTP/|location'
+curl.exe -sIL "https://www.shouar-riders.com/characters.html?x=1" | Select-String '^(HTTP|location)'
 ```
 
 ## 5. 周辺の後始末
 
 - RadianNs_WebSite の変更を develop にコミット → 通常フローで公開。
-- Google Search Console: 新プロパティ `www.shauer-riders.com` を追加し、旧プロパティで「アドレス変更」を実行。サイトマップがあれば新側で再送信。
+- Google Search Console: 2026-09-12 に確認したところ、snine9801 の Google アカウントには旧ドメインのプロパティが未登録（ウェルカム画面）だったため「アドレス変更」は不要。検索流入を見たいなら新ドメイン `shauer-riders.com` をドメイン プロパティとして登録する（Cloudflare の DNS TXT で検証）。任意。
 - SNS プロフィール・pixiv・Misskey・名刺・同人誌奥付など、外部に書いた旧 URL を差し替え（リダイレクトは残るが、旧ドメインの更新を止める日まで）。
-- `shauer-riders.com` は **最低 1 年（できれば 2〜3 年）保持**してからリダイレクトを止める。失効するとタイポドメインとして第三者に取られ得るので、更新を止めるかは要判断。
+- `shouar-riders.com` は **最低 1 年（できれば 2〜3 年）保持**してからリダイレクトを止める。失効するとタイポドメインとして第三者に取られ得るので、更新を止めるかは要判断。
 - 各リポジトリの AGENTS.md / project-spec 等にドメイン記載があれば更新（今回の grep ではコード内の参照は上記 4 箇所のみだった）。
 
-## 6. リポジトリ名の変更（ShauErRider-HTML_CSS → ShauErRider-HTML_CSS）
+## 6. リポジトリ名の変更（ShouArRider-HTML_CSS → ShauErRider-HTML_CSS）
 
-ローカル側は 2026-09-12 に実施済み: フォルダ名を `ShauErRider-HTML_CSS` に変更、`origin` を `https://github.com/radiann-kswg/ShauErRider-HTML_CSS.git` に変更、各リポジトリ内の旧リポジトリ名の記載（AGENTS.md / CLAUDE.md / .github/_shared/* / copilot-instructions / radiann-kswg README / ワークスペース AGENTS.md / .wip アーカイブ / NumberTales の sass コメント）を新名へ置換。`index.html` の meta keywords「ShauErRiders」は作品表記なので据え置き。
+ローカル側は 2026-09-12 に実施済み: フォルダ名を `ShauErRider-HTML_CSS` に変更、`origin` を `https://github.com/radiann-kswg/ShauErRider-HTML_CSS.git` に変更、各リポジトリ内の旧リポジトリ名の記載（AGENTS.md / CLAUDE.md / .github/_shared/* / copilot-instructions / radiann-kswg README / ワークスペース AGENTS.md / .wip アーカイブ / NumberTales の sass コメント）を新名へ置換。`index.html` の meta keywords「ShouArRiders」は作品表記なので据え置き。
 
 GitHub 側（User が実施）:
 
-1. GitHub → `radiann-kswg/ShauErRider-HTML_CSS` → Settings → General → Repository name を `ShauErRider-HTML_CSS` に変更 → Rename。
+1. GitHub → `radiann-kswg/ShouArRider-HTML_CSS` → Settings → General → Repository name を `ShauErRider-HTML_CSS` に変更 → Rename。
 2. 旧名の URL（web / git remote）は GitHub が自動で新名へリダイレクトするが、ローカルの `origin` はすでに新名にしてあるので、リネーム後に `git fetch` が通ることを確認する。
 3. GitHub Pages の設定・カスタムドメイン・Actions（`static.yml` / `jekyll-gh-pages.yml`）はリネームで引き継がれる。フォールバック URL だけ `radiann-kswg.github.io/ShauErRider-HTML_CSS/` に変わる。
-4. Cowork の接続フォルダ「ShauErRider-HTML_CSS」は外れているので、`D:\VisualStudio Code Userfile\WebSites\ShauErRider-HTML_CSS` を接続し直す。
-5. Mac 側（`/Users/snine9801/VSCodeUserFiles/Websites/ShauErRider-HTML_CSS`）は `mv` でフォルダ名を変え、`git remote set-url origin` を同様に実行し、`git pull` でファイル側の変更を取り込む。ワークスペース `AGENTS.md` の Mac コピーも Windows 側と揃える。
+4. Cowork の接続フォルダ「ShouArRider-HTML_CSS」は外れているので、`D:\VisualStudio Code Userfile\WebSites\ShauErRider-HTML_CSS` を接続し直す。
+5. Mac 側（`/Users/snine9801/VSCodeUserFiles/Websites/ShouArRider-HTML_CSS`）は `mv` でフォルダ名を変え、`git remote set-url origin` を同様に実行し、`git pull` でファイル側の変更を取り込む。ワークスペース `AGENTS.md` の Mac コピーも Windows 側と揃える。
 
 コミット順の目安: ① 記載変更（AGENTS/CLAUDE/.github/docs）→ ② GitHub でリネーム → ③ DNS 準備後に `CNAME` を push。①と③を同じコミットにしない。
 
 ## 実施チェックリスト
 
-- [ ] 1. shauer-riders.com を Cloudflare Registrar で取得
-- [ ] 2. 新ゾーンの DNS 5 レコード + SSL Full + 旧ゾーンと同じ設定
-- [ ] 3. CNAME を push → Pages の Custom domain 確認 → Enforce HTTPS
-- [ ] 4. 旧ゾーンに Redirect Rule（301, query 保持）
-- [ ] 5. RadianNs_WebSite のリンク変更をコミット・公開
-- [ ] 6. Search Console アドレス変更 / 外部 URL 差し替え
-- [ ] 7. GitHub でリポジトリ名を ShauErRider-HTML_CSS に変更 → fetch 確認 → Cowork 接続フォルダ再接続 → Mac 側フォルダ名・origin 変更
+- [x] 1. shauer-riders.com を Cloudflare Registrar で取得
+- [x] 2. 新ゾーンの DNS 5 レコード + SSL Full + 旧ゾーンと同じ設定
+- [x] 3. CNAME を push → Pages の Custom domain 確認 → Enforce HTTPS
+- [x] 4. 旧ゾーンに Redirect Rule（301, query 保持）+ Always Use HTTPS ON
+- [x] 5. RadianNs_WebSite のリンク変更をコミット・公開（develop e3e71f0）
+- [ ] 6. 外部 URL 差し替え（Search Console は未登録だったのでアドレス変更は不要。新ドメインの登録は任意）
+- [x] 7a. GitHub でリポジトリ名を ShauErRider-HTML_CSS に変更（2026-09-12 完了、新旧 URL とも fetch 可）
+- [ ] 7b. Cowork 接続フォルダを新パスで再接続
+- [ ] 7c. Mac 側フォルダ名・origin 変更 → `git pull`
+- [ ] 8. 記載変更の残りをコミット: radiann-kswg `README.md`、NumberTales `character-stories/story-style.sass`、ShauErRider `docs/domain-migration-shauer-riders.md`
